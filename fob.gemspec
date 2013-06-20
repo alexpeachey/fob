@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["alex.peachey@gmail.com"]
   spec.description   = %q{Form OBjects made easy.}
   spec.summary       = %q{Don't bulk up your models or controllers. Stay away from accepts_nested_attributes_for. Put form logic where it belongs, in a FOB!}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/alexpeachey/fob"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
