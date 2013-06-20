@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-    class MyModel < Fob::Fob
+    class MyForm < Fob::Fob
       represents :user, with: :username, :email
       has_one :company, with: :name
       attribute :remember_me, Boolean
