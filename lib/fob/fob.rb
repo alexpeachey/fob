@@ -1,3 +1,5 @@
+require 'active_model/validations/uniqueness_on_validator'
+
 module Fob
 
   class Fob
@@ -8,7 +10,7 @@ module Fob
 
     def self.represents(name, options={})
       include_model(name, options)
-      klass = name.to_s.split("_").collect(&:capitalize).join
+      klass = name.to_s.camelcase
       singleton_class.instance_eval do
         define_method(:model_name) do
           ::ActiveModel::Name.new(self, nil, "#{klass}")
@@ -20,8 +22,17 @@ module Fob
       include_model(name, options)
     end
 
+    def initialize(*args, &block)
+      super
+      @persisted = false
+    end
+
+    def save
+      @persisted = yield attributes
+    end
+
     def persisted?
-      false
+      @persisted
     end
 
     private
